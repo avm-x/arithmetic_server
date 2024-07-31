@@ -18,7 +18,6 @@ public class Client {
             this.output = new PrintWriter(clientSocket.getOutputStream(), true);
             this.input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            System.out.println(input.readLine());
         } catch (Exception e) {
             System.out.println(e + " Error trying to start connection by client");
 
@@ -28,13 +27,19 @@ public class Client {
     public void connectionLoop() {
         try {
             Scanner scanner = new Scanner(System.in);
+
             while (true) {
+                while (input.ready()) {
+                    System.out.println(input.readLine());
+                }
+
                 String outputLine = scanner.nextLine();
                 if (outputLine.equals("end")) {
                     break;
                 }
 
                 System.out.println(sendMessageGetResponse(outputLine));
+
             }
         } catch (Exception e) {
             System.out.println(e + " Error in connection loop");

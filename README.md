@@ -3,6 +3,5 @@
 
 these operations could come in the following formats:
 
-- "sum 3,4,5,6"
-- "+ 3,4,5,6"
-- "3 + 4 - 5 + 6"
+- "2+3"
+- "3 * 2"
